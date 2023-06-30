@@ -22,6 +22,7 @@ jobs:
   detail_master:
     runs-on: ubuntu-latest
     name: Detail the master branch
+    # if the target branch is master
     if: ${{ github.base_ref == 'master' }}
     steps:
       - name: Dump dets
@@ -29,8 +30,7 @@ jobs:
 
   detail_branch:
     runs-on: ubuntu-latest
-    name: Detail the branch
-    if: ${{ github.base_ref == 'master' }}
+    name: Detail the source
     steps:
       - name: Dump dets
-        run: echo "${{ github.base_ref }} branch"
+        run: echo "${{ github.head_ref }} branch"
