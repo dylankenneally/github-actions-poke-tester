@@ -34,3 +34,16 @@ jobs:
     steps:
       - name: Dump dets
         run: echo "${{ github.head_ref }} branch"
+
+  detail_more:
+    runs-on: ubuntu-latest
+    name: Details are here
+    steps:
+      - name: Dump head reference branch
+        run: echo "${{ github.head_ref }} branch"
+      - name: Dump base reference branch
+        run: echo "${{ github.base_ref }} branch"
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
