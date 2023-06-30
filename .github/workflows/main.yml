@@ -37,7 +37,7 @@ jobs:
 
   detail_more:
     runs-on: ubuntu-latest
-    name: Details are here
+    name: Details are here, happy reading
     steps:
       - name: Dump head reference branch
         run: echo "${{ github.head_ref }} branch"
