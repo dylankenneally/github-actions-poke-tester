@@ -1,4 +1,8 @@
-on: [push]
+on:
+  pull_request:   # on every PR
+  push:
+    branches:
+      - master    # on every push to master: the build artifacts are uploaded
 
 jobs:
   hello_world_job:
@@ -14,3 +18,19 @@ jobs:
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
+
+  detail_master:
+    runs-on: ubuntu-latest
+    name: Detail the master branch
+    # if the target branch is master
+    if: ${{ github.base_ref == 'master' }}
+    steps:
+      - name: Dump dets
+        run: echo "master branch"
+
+  detail_branch:
+    runs-on: ubuntu-latest
+    name: Detail the source
+    steps:
+      - name: Dump dets
+        run: echo "${{ github.head_ref }} branch"
